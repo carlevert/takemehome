@@ -1,0 +1,38 @@
+<REQUEST>
+      <LOGIN authenticationkey="openapiconsolekey" />
+      <QUERY objecttype="TrainAnnouncement" orderby="AdvertisedTimeAtLocation">
+            <FILTER>
+                  <AND>
+                        <EQ name="ActivityType" value="Avgang" />
+                        <EQ name="LocationSignature" value="Ök" />
+<EQ name="ToLocation.LocationName" value="Uå" />
+  <or>
+                              <AND>
+                                    <GT name="AdvertisedTimeAtLocation" value="$dateadd(0:0:0)" />
+                                    <LT name="AdvertisedTimeAtLocation" value="$dateadd(3:0:0)" />
+                              </AND>
+
+
+                              <AND>
+                                    <GT name="EstimatedTimeAtLocation" value="$dateadd(0:0:0)" />
+                                    <LT name="EstimatedTimeAtLocation" value="$dateadd(3:0:0)" />
+                              </AND>
+</or>
+
+
+                  </AND>
+
+            </FILTER>
+            <INCLUDE>AdvertisedTrainIdent</INCLUDE>
+            <INCLUDE>EstimatedTimeAtLocation</INCLUDE>
+            <INCLUDE>AdvertisedTimeAtLocation</INCLUDE>
+            <INCLUDE>TrackAtLocation</INCLUDE>
+			<INCLUDE>Canceled</INCLUDE>
+           <INCLUDE>ProductInformation</INCLUDE>
+		   <INCLUDE>AdvertisedTrainIdent</INCLUDE>
+		   <INCLUDE>TechnicalTrainIdent</INCLUDE>
+		   <INCLUDE>InformationOwner</INCLUDE>
+		   <INCLUDE>EstimatedTimeIsPreliminary</INCLUDE>
+		   <INCLUDE>TypeOfTraffic</INCLUDE>
+      </QUERY>
+</REQUEST>
